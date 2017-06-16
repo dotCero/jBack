@@ -6,7 +6,7 @@
 package view;
 
 import javax.swing.JFrame;
-import model.Aplication;
+import controller.Aplication;
 
 /**
  *
@@ -133,7 +133,7 @@ public class App extends JFrame {
 
         cboDataBases.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnDir.setText(".");
+        btnDir.setText("...");
 
         jLabel5.setText("KB");
 

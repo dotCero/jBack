@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import controller.action.ActionConnect;
 import java.awt.event.ActionListener;
@@ -62,7 +62,7 @@ public class Aplication {
     }
 
     private void addAction() {
-        al = new ActionConnect(host, user, pass, dbs);
+        al = new ActionConnect(view, host, user, pass, dbs);
         connect.addActionListener(al);
     }
 
@@ -74,8 +74,8 @@ public class Aplication {
 
         dbs.setEnabled(b);
         capacity.setEditable(b);
-        dir.setEditable(b);
-        state.setEditable(b);
+        dir.setEditable(!b);
+        state.setEditable(!b);
         btnDir.setEnabled(b);
     }
 }

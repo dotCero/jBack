@@ -6,6 +6,7 @@ package model;
  */
 public class DataBase {
     private String name;
+    public String DB_MAIN = "mysql";
 
     public DataBase() {
     }

@@ -2,12 +2,17 @@ package controller.action;
 
 import controller.DBConnection;
 import controller.Data;
+import controller.Setting;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import model.DataBase;
@@ -18,11 +23,14 @@ import model.DataBase;
  */
 public class ActionConnect implements ActionListener {
 
+    private final JFrame app;
+
     private final JTextField host, user;
     private final JPasswordField pass;
-    private JComboBox databases;
+    private final JComboBox databases;
 
-    public ActionConnect(JTextField host, JTextField user, JPasswordField pass, JComboBox databases) {
+    public ActionConnect(JFrame app, JTextField host, JTextField user, JPasswordField pass, JComboBox databases) {
+        this.app = app;
         this.host = host;
         this.user = user;
         this.pass = pass;
@@ -43,8 +51,13 @@ public class ActionConnect implements ActionListener {
             }
 
         } catch (SQLException ex) {
-//            Logger.getLogger(ActionConnect.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error al conectar con la Base de Datos");
+            JOptionPane.showMessageDialog(
+                    app,
+                    "Error al cargar las bases de datos, reescriba los parámetros",
+                    "Error al loguear",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            databases.removeAllItems();
         }
     }
 
