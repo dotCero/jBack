@@ -1,6 +1,7 @@
 package controller;
 
 import controller.action.ActionConnect;
+import controller.action.ActionOpenDir;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,7 +23,8 @@ public class Aplication {
 
     private JComboBox dbs;
 
-    ActionListener al;
+    ActionListener alac;
+    ActionListener alaod;
 
     public Aplication(
             JFrame view,
@@ -62,8 +64,10 @@ public class Aplication {
     }
 
     private void addAction() {
-        al = new ActionConnect(view, host, user, pass, dbs);
-        connect.addActionListener(al);
+        alac = new ActionConnect(view, host, user, pass, dbs);
+        alaod = new ActionOpenDir(dir);
+        connect.addActionListener(alac);
+        btnDir.addActionListener(alaod);
     }
 
     public void enabledComponents(Boolean b) {
